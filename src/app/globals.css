@@ -3,3 +3,24 @@
   margin: 0;
   padding: 0;
 }
+
+.inicio {
+  position: relative;
+  width: 100vw;
+  height: fit-content;
+}
+
+.inicio-background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  object-fit: cover;
+}
+
+@media (641px <= width <= 1007px) {
+}
+
+@media (width <= 640px) {
+
+}
