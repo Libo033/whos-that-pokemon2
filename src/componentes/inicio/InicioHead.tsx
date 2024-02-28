@@ -1,26 +1,20 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./page.module.css";
 import { Button, TextField } from "@mui/material";
-import { deleteStoreName, storeName } from "@/libs/helpers";
 
-const InicioHead = () => {
-  const [localName, setLocalName] = useState<string | null>(null);
+interface IInicioHead {
+  localName: string | null;
+  handleDelLocalName: () => void;
+  handleSetLocalName: (name: string) => void;
+}
+
+const InicioHead: React.FC<IInicioHead> = ({
+  localName,
+  handleDelLocalName,
+  handleSetLocalName,
+}) => {
   const [nombre, setNombre] = useState<string>("");
-
-  const handleSetLocalName = (name: string) => {
-    setLocalName(name);
-    storeName(name);
-  };
-
-  const handleDelLocalName = () => {
-    deleteStoreName();
-    setLocalName(null);
-  };
-
-  useEffect(() => {
-    setLocalName(localStorage.getItem("Username"));
-  }, []);
 
   return (
     <div className={styles.Inicio_Head}>
@@ -39,7 +33,6 @@ const InicioHead = () => {
           onChange={(e) => setNombre(e.target.value)}
         />
       )}
-
       <Button
         onClick={() => handleSetLocalName(nombre)}
         sx={{ width: "30%" }}
