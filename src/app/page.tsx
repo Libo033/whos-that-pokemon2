@@ -1,5 +1,4 @@
 import Image from "next/image";
-import styles from "./page.module.css";
 import Inicio from "@/componentes/inicio/Inicio";
 
 export default function Home() {
