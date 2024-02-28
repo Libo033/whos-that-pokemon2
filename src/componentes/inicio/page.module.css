@@ -1,0 +1,83 @@
+.Inicio {
+  width: 72%;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 32px;
+  gap: 18px;
+}
+
+/**/
+.Inicio_Head {
+  width: 100%;
+  padding: 15px;
+  border-radius: 6px;
+  display: flex;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.1px);
+  -webkit-backdrop-filter: blur(6.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+/**/
+
+/**/
+.InicioBody {
+  background-color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 15px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.InicioBody h2 {
+  text-align: center;
+}
+
+.InicioBody_Table {
+  border-radius: 5px;
+  font-size: large;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  background-color: white;
+}
+
+.InicioBody_Table td,
+.InicioBody_Table th {
+  text-align: center;
+  padding: 12px;
+}
+
+.InicioBody_Table td {
+  border-right: 1px solid #f8f8f8;
+  font-size: 15px;
+}
+
+.InicioBody_Table thead th {
+  border-bottom: 1px solid gainsboro;
+  color: gray;
+}
+
+.InicioBody_Table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+/**/
+
+@media (641px <= width <= 1007px) {
+  .Inicio {
+    width: 81%;
+  }
+}
+
+@media (width <= 640px) {
+  .Inicio {
+    width: 93%;
+  }
+}

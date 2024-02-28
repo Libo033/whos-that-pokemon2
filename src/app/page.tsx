@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Inicio from "@/componentes/inicio/Inicio";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         width={748}
         height={421}
       />
+      <Inicio />
     </main>
   );
 }
