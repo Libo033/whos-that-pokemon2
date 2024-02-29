@@ -57,9 +57,14 @@ const defaultTop = [
 interface IInicioBody {
   record: number;
   localName: string | null;
+  recordName: string | null;
 }
 
-const InicioBody: React.FC<IInicioBody> = ({ record, localName }) => {
+const InicioBody: React.FC<IInicioBody> = ({
+  record,
+  localName,
+  recordName,
+}) => {
   return (
     <div className={styles.InicioBody}>
       <h2>TOP 10</h2>
@@ -81,7 +86,7 @@ const InicioBody: React.FC<IInicioBody> = ({ record, localName }) => {
           ))}
           <tr>
             <td>Mi record</td>
-            <td>{localName}</td>
+            <td>{recordName || localName}</td>
             <td>{record || 0}</td>
           </tr>
         </tbody>

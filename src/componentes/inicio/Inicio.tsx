@@ -8,6 +8,7 @@ import { deleteStoreName, storeName } from "@/libs/helpers";
 const Inicio = () => {
   const [localName, setLocalName] = useState<string | null>(null);
   const [record, setRecord] = useState<number>(0);
+  const [recordName, setRecordName] = useState<string | null>(null);
 
   const handleSetLocalName = (name: string) => {
     setLocalName(name);
@@ -22,6 +23,7 @@ const Inicio = () => {
   useEffect(() => {
     setLocalName(localStorage.getItem("Username"));
     setRecord(parseInt(localStorage.getItem("Record") || "0"));
+    setRecordName(localStorage.getItem("RecordUsername"));
   }, []);
 
   return (
@@ -31,7 +33,7 @@ const Inicio = () => {
         handleDelLocalName={handleDelLocalName}
         handleSetLocalName={handleSetLocalName}
       />
-      <InicioBody record={record} localName={localName} />
+      <InicioBody record={record} localName={localName} recordName={recordName} />
     </div>
   );
 };
