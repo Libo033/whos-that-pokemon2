@@ -6,7 +6,7 @@ import { countdown } from "@/libs/helpers";
 
 const Play = () => {
   const [puntaje, setPuntaje] = useState<number>(0);
-  const [c, setC] = useState<number>(0);
+  const [c, setC] = useState<number>(60);
 
   useEffect(() => {
     countdown(60, setC);
