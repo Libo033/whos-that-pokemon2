@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import styles from "./page.module.css";
 import { Button, TextField } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 interface IInicioHead {
   localName: string | null;
@@ -15,6 +16,13 @@ const InicioHead: React.FC<IInicioHead> = ({
   handleSetLocalName,
 }) => {
   const [nombre, setNombre] = useState<string>("");
+  const router = useRouter();
+
+  const startPlaying = (name: string) => {
+    if (!localName) handleSetLocalName(name);
+
+    router.push("/play");
+  };
 
   return (
     <div className={styles.Inicio_Head}>
@@ -34,7 +42,7 @@ const InicioHead: React.FC<IInicioHead> = ({
         />
       )}
       <Button
-        onClick={() => handleSetLocalName(nombre)}
+        onClick={() => startPlaying(nombre)}
         sx={{ width: "30%" }}
         variant="contained"
       >
