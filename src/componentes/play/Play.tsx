@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Countdown from "./Countdown";
 import styles from "./page.module.css";
 import { countdown } from "@/libs/helpers";
+import PokemonCard from "./PokemonCard";
 
 const Play = () => {
   const [puntaje, setPuntaje] = useState<number>(0);
@@ -20,6 +21,7 @@ const Play = () => {
         </div>
         <Countdown c={c} />
       </div>
+      <PokemonCard />
     </div>
   );
 };
