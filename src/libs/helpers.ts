@@ -18,10 +18,10 @@ export function countdown(
   time: number,
   setCountdown: React.Dispatch<SetStateAction<number>>
 ) {
-  const inicio = Date.parse(new Date().getMilliseconds().toString());
+  const inicio = Date.parse(new Date().toString());
 
   setInterval(() => {
-    const total = Date.parse(new Date().getMilliseconds().toString());
+    const total = Date.parse(new Date().toString());
 
     if (inicio / 1000 - total / 1000 + time >= 0) {
       setCountdown(inicio / 1000 - total / 1000 + time);
