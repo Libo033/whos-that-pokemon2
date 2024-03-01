@@ -8,12 +8,13 @@ const PokemonCard = () => {
     <div className={styles.PokemonCard}>
       <div className={styles.PokemonCard_BattleZone}>
         <Image
+          className={styles.PokemonCard_Pokemon}
           src={
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
           }
           alt="pokemon"
-          width={96}
-          height={96}
+          width={475}
+          height={475}
         />
       </div>
       <div className={styles.PokemonCard_TextField}>
