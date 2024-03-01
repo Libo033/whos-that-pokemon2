@@ -32,6 +32,18 @@ const Play = () => {
     }
   };
 
+  const handleSaltar = () => {
+    if (idPok) {
+      setShow(true);
+      setInp(pokemon[idPok].name);
+      setTimeout(() => {
+        setShow(false);
+        setInp("");
+        setIdPok(getRandomInt(0, 150));
+      }, 750);
+    }
+  };
+
   useEffect(() => {
     if (c === 0) {
       // r.push("/");
@@ -55,6 +67,7 @@ const Play = () => {
           handleChange={handleChangeInput}
           input={inp}
           show={show}
+          saltar={handleSaltar}
         />
       )}
     </div>

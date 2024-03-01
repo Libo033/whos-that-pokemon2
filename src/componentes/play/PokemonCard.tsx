@@ -9,6 +9,7 @@ interface IPokemonCard {
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   input: string;
   show: boolean;
+  saltar: () => void;
 }
 
 const PokemonCard: React.FC<IPokemonCard> = ({
@@ -16,6 +17,7 @@ const PokemonCard: React.FC<IPokemonCard> = ({
   input,
   handleChange,
   show,
+  saltar
 }) => {
   return (
     <div className={styles.PokemonCard}>
@@ -40,7 +42,7 @@ const PokemonCard: React.FC<IPokemonCard> = ({
           autoComplete="off"
         />
       </div>
-      <span className={styles.PokemonCard_Saltar}>Saltar</span>
+      <span onClick={() => saltar()} className={styles.PokemonCard_Saltar}>Saltar</span>
     </div>
   );
 };
