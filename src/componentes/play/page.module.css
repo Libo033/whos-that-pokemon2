@@ -92,6 +92,12 @@
   filter: brightness(0%);
 }
 
+.PokemonCard_PokemonTrue {
+  width: 270px;
+  height: auto;
+  filter: brightness(99%);
+}
+
 .PokemonCard_TextField {
   width: 50%;
   margin-block: 15px;

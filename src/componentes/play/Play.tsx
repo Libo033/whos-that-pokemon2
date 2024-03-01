@@ -1,17 +1,45 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import Countdown from "./Countdown";
 import styles from "./page.module.css";
-import { countdown } from "@/libs/helpers";
+import { countdown, getRandomInt } from "@/libs/helpers";
 import PokemonCard from "./PokemonCard";
+import { PokedexContext } from "@/context/PokedexContext";
+import { useRouter } from "next/navigation";
 
 const Play = () => {
+  const { pokemon, load } = useContext(PokedexContext);
+  const r = useRouter();
   const [puntaje, setPuntaje] = useState<number>(0);
+  const [idPok, setIdPok] = useState<number | undefined>(undefined);
   const [c, setC] = useState<number>(60);
+  const [inp, setInp] = useState<string>("");
+  const [show, setShow] = useState<boolean>(false);
+
+  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setInp(e.target.value);
+
+    if (idPok) {
+      if (e.target.value === pokemon[idPok].name) {
+        setShow(true);
+        setPuntaje((p) => p + 1);
+        setInp("");
+        setTimeout(() => {
+          setShow(false);
+          setIdPok(getRandomInt(0, 150));
+        }, 1500);
+      }
+    }
+  };
 
   useEffect(() => {
-    countdown(60, setC);
-  }, []);
+    if (c === 0) {
+      // r.push("/");
+    } else if (c === 60) {
+      setIdPok(getRandomInt(0, 150));
+      countdown(60, setC);
+    }
+  }, [c]);
 
   return (
     <div className={styles.Play}>
@@ -21,7 +49,14 @@ const Play = () => {
         </div>
         <Countdown c={c} />
       </div>
-      <PokemonCard />
+      {load && idPok && (
+        <PokemonCard
+          pokemon={pokemon[idPok]}
+          handleChange={handleChangeInput}
+          input={inp}
+          show={show}
+        />
+      )}
     </div>
   );
 };
