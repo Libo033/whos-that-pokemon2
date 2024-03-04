@@ -1,7 +1,20 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
+interface IPuntaje {
+  _id: string;
+  nombre: string;
+  puntaje: number;
+}
 
-const defaultTop = [
+interface IInicioBody {
+  record: number;
+  ultimo: number;
+  localName: string | null;
+  recordName: string | null;
+}
+
+const defaultTop: IPuntaje[] = [
   {
     _id: "1",
     nombre: "",
@@ -54,18 +67,30 @@ const defaultTop = [
   },
 ];
 
-interface IInicioBody {
-  record: number;
-  ultimo: number;
-  localName: string | null;
-  recordName: string | null;
-}
-
 const InicioBody: React.FC<IInicioBody> = ({
   record,
   localName,
   recordName,
 }) => {
+  const [puntaje, setPuntaje] = useState<IPuntaje[]>([]);
+
+  useEffect(() => {
+    fetch("/api/v1/puntaje", { headers: { authorization: "Bearer 2024" } })
+      .then((res) => res.json())
+      .then((data: { code: number; puntaje: IPuntaje[] }) => {
+        if (data.puntaje.length > 10) {
+          setPuntaje(data.puntaje);
+        } else {
+          let p = data.puntaje;
+          defaultTop.forEach((d) => p.push(d));
+          setPuntaje(p.toSorted((a, b) => b.puntaje - a.puntaje));
+        }
+      })
+      .catch((error) => {
+        if (error instanceof Error) console.log(error);
+      });
+  }, []);
+
   return (
     <div className={styles.InicioBody}>
       <h2>TOP 10</h2>
@@ -78,7 +103,7 @@ const InicioBody: React.FC<IInicioBody> = ({
           </tr>
         </thead>
         <tbody>
-          {defaultTop.slice(0, 10).map((d, i) => (
+          {puntaje.slice(0, 10).map((d, i) => (
             <tr key={d._id}>
               <td>{i + 1}</td>
               <td>{d.nombre}</td>
