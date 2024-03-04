@@ -12,7 +12,7 @@ const Play = () => {
   const r = useRouter();
   const [puntaje, setPuntaje] = useState<number>(0);
   const [idPok, setIdPok] = useState<number | undefined>(undefined);
-  const [c, setC] = useState<number>(60);
+  const [c, setC] = useState<number>(180);
   const [inp, setInp] = useState<string>("");
   const [show, setShow] = useState<boolean>(false);
 
@@ -46,10 +46,19 @@ const Play = () => {
 
   useEffect(() => {
     if (c === 0) {
-      // r.push("/");
-    } else if (c === 60) {
+      const re = parseInt(localStorage.getItem("Record") || "0");
+      const us = localStorage.getItem("Username") || "";
+
+      if (puntaje > re) {
+        localStorage.setItem("Record", puntaje.toString());
+        localStorage.setItem("RecordUsername", us);
+      }
+
+      localStorage.setItem("Ultimo", puntaje.toString());
+      r.push("/");
+    } else if (c === 180) {
       setIdPok(getRandomInt(0, 150));
-      countdown(60, setC);
+      countdown(180, setC);
     }
   }, [c]);
 
