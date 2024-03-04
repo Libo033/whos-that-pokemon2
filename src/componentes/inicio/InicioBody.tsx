@@ -56,6 +56,7 @@ const defaultTop = [
 
 interface IInicioBody {
   record: number;
+  ultimo: number;
   localName: string | null;
   recordName: string | null;
 }
@@ -87,6 +88,11 @@ const InicioBody: React.FC<IInicioBody> = ({
           <tr>
             <td>Mi record</td>
             <td>{recordName || localName}</td>
+            <td>{record || 0}</td>
+          </tr>
+          <tr>
+            <td>Ultimo</td>
+            <td>{localName}</td>
             <td>{record || 0}</td>
           </tr>
         </tbody>
