@@ -54,6 +54,19 @@ const Play = () => {
         localStorage.setItem("RecordUsername", us);
       }
 
+      fetch("/api/v1/puntaje", {
+        method: "POST",
+        body: JSON.stringify({ nombre: us, puntaje }),
+        headers: {
+          authorization: "Bearer 2024",
+          "Content-Type": "application/json",
+        },
+      }).catch((error) => {
+        if (error instanceof Error) {
+          console.log(error);
+        }
+      });
+
       localStorage.setItem("Ultimo", puntaje.toString());
       r.push("/");
     } else if (c === 180) {
