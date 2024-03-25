@@ -20,7 +20,10 @@ const Play = () => {
     setInp(e.target.value);
 
     if (idPok) {
-      if (e.target.value === pokemon[idPok].name) {
+      if (
+        e.target.value.toLocaleLowerCase() ===
+        pokemon[idPok].name.toLocaleLowerCase()
+      ) {
         setShow(true);
         setPuntaje((p) => p + 1);
         setInp("");
